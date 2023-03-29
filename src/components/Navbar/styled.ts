@@ -64,9 +64,13 @@ export const StyledMenuToggleButton = styled(ToggleButton)(({ theme }) => ({
     },
 }));
 
-export const StyledSwipeableDrawer = styled(SwipeableDrawer)(
-    ({ theme }) => ({}),
-);
+export const StyledSwipeableDrawer = styled(SwipeableDrawer)(({ theme }) => ({
+    fontSize: '2rem',
+    opacity: 0.88,
+    a: {
+        margin: '2rem',
+    },
+}));
 
 export const StyledNavLink = styled(Link)(({ theme }) => ({
     textDecoration: 'none',

@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
 import SportsBarIcon from '@mui/icons-material/SportsBar';
-import { StyledNavBar, StyledMenuToggleButton, StyledNavLink } from './styled';
-import { SwipeableDrawer } from '@mui/material';
+import {
+    StyledNavBar,
+    StyledMenuToggleButton,
+    StyledNavLink,
+    StyledSwipeableDrawer,
+} from './styled';
 import FormatAlignCenterIcon from '@mui/icons-material/FormatAlignCenter';
+
+interface NavbarProps {
+    //
+}
 
 const linksData = [
     { href: '/', name: 'Home' },
@@ -11,12 +19,12 @@ const linksData = [
     { href: '/', name: 'Store' },
 ];
 
-const Navbar = () => {
+const Navbar: React.FC<NavbarProps> = () => {
     const [drawerOpen, setDrawerOpen] = useState(false);
 
     return (
         <StyledNavBar>
-            <SwipeableDrawer
+            <StyledSwipeableDrawer
                 anchor={'left'}
                 open={drawerOpen}
                 onClose={() => setDrawerOpen(false)}
@@ -27,7 +35,7 @@ const Navbar = () => {
                         {element.name}
                     </StyledNavLink>
                 ))}
-            </SwipeableDrawer>
+            </StyledSwipeableDrawer>
             <div className="navbar-left">
                 <StyledMenuToggleButton
                     value={drawerOpen}
