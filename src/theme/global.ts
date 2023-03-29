@@ -8,7 +8,11 @@ export default createGlobalStyle`
         box-sizing:border-box;
         font-family: 'Open Sans', sans-serif; 
     }
+    html, body, #app, #app>div {
+        height: 100%
+}
     #root{
         margin:0 auto;
+        
     }
 `;

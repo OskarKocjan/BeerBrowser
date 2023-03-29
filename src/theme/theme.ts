@@ -6,10 +6,9 @@ export const theme = createTheme({
     },
     palette: {
         primary: {
-            main: 'hsl(43, 74%, 49%)',
+            main: 'hsl(43, 74%, 80%)',
             dark: '#F4A460',
-            light: 'hsl(43, 74%, 85%)',
-            // light: '#F5DEB3',
+            light: 'hsl(43, 74%, 90%)',
             contrastText: '#000',
         },
     },
