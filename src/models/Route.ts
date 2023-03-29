@@ -1,6 +1,6 @@
 interface RouteProps {
     path: string;
-    element: React.FC;
+    Component: React.FC;
 }
 
 export default RouteProps;

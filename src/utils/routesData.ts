@@ -1,6 +1,6 @@
-import Home from '../containers/Home';
-import RouteProps from '../models/Route';
+import Home from 'containers/Home';
+import RouteProps from 'models/Route';
 
-const routesData: RouteProps[] = [{ path: '/', element: Home }];
+const routesData: RouteProps[] = [{ path: '/', Component: Home }];
 
 export default routesData;
