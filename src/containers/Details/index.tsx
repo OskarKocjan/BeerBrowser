@@ -1,4 +1,4 @@
-import { DetailsProps } from 'models/DetailsModels';
+import { DetailsProps } from "models/DetailsModels";
 
 const Details: React.FC<DetailsProps> = () => {
     return <div>beer details</div>;

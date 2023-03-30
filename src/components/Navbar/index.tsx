@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import SportsBarIcon from '@mui/icons-material/SportsBar';
+import React, { useState } from "react";
+import SportsBarIcon from "@mui/icons-material/SportsBar";
 import {
     StyledNavBar,
     StyledMenuToggleButton,
     StyledNavLink,
     StyledSwipeableDrawer,
-} from './styled';
-import FormatAlignCenterIcon from '@mui/icons-material/FormatAlignCenter';
-import { NavbarProps, NavbarLinkData } from 'models/NavbarModels';
+} from "./styled";
+import FormatAlignCenterIcon from "@mui/icons-material/FormatAlignCenter";
+import { NavbarProps, NavbarLinkData } from "models/NavbarModels";
 
 const linksData: NavbarLinkData[] = [
-    { href: '/', name: 'Home', key: 1 },
-    { href: '/', name: 'About', key: 2 },
-    { href: '/', name: 'Blog', key: 3 },
-    { href: '/', name: 'Store', key: 4 },
+    { href: "/", name: "Home", key: 1 },
+    { href: "/", name: "About", key: 2 },
+    { href: "/", name: "Blog", key: 3 },
+    { href: "/", name: "Store", key: 4 },
 ];
 
 const Navbar: React.FC<NavbarProps> = () => {
@@ -22,7 +22,7 @@ const Navbar: React.FC<NavbarProps> = () => {
     return (
         <StyledNavBar>
             <StyledSwipeableDrawer
-                anchor={'left'}
+                anchor={"left"}
                 open={drawerOpen}
                 onClose={() => setDrawerOpen(false)}
                 onOpen={() => setDrawerOpen(true)}
@@ -47,7 +47,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                 ))}
             </div>
             <div className="navbar-center">
-                <SportsBarIcon sx={{ height: '100%', fontSize: '3rem' }} />
+                <SportsBarIcon sx={{ height: "100%", fontSize: "3rem" }} />
                 <span>Beer</span>
             </div>
             <div className="navbar-right"></div>

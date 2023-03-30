@@ -1,9 +1,9 @@
-import React from 'react';
-import routesData from 'utils/routesData';
-import { Routes } from 'react-router';
-import { Route } from 'react-router';
-import Navbar from 'components/Navbar';
-import { ImageHolder } from './styled';
+import React from "react";
+import routesData from "utils/routesData";
+import { Routes } from "react-router";
+import { Route } from "react-router";
+import Navbar from "components/Navbar";
+import { ImageHolder } from "./styled";
 
 const App = () => {
     return (

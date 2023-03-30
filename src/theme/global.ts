@@ -15,4 +15,9 @@ export default createGlobalStyle`
         margin:0 auto;
         
     }
+    button {
+            padding: 0;
+            border: none;
+            background: none;
+        },
 `;
