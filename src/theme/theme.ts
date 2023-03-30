@@ -6,9 +6,9 @@ export const theme = createTheme({
     },
     palette: {
         primary: {
-            main: 'hsl(43, 74%, 80%)',
+            main: 'hsl(43, 74%, 75%)',
             dark: '#F4A460',
-            light: 'hsl(43, 74%, 90%)',
+            light: 'hsl(43, 74%, 85%)',
             contrastText: '#000',
         },
     },

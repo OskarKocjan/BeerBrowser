@@ -9,7 +9,6 @@ export const StyledNavBar = styled('nav')(({ theme }) => ({
     position: 'absolute',
     width: '100vw',
     top: 0,
-    boxShadow: 'none',
     height: '6rem',
     backgroundColor: theme.palette.primary.light,
     transition: 'background-color 0.25s ease-in-out',
@@ -18,6 +17,8 @@ export const StyledNavBar = styled('nav')(({ theme }) => ({
         opacity: 1,
     },
     opacity: 0.75,
+
+    boxShadow: 'rgba(0, 0, 0, 0.35) 0px 2px 10px',
 
     '.navbar-left': {
         marginLeft: '4rem',

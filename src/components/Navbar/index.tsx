@@ -7,16 +7,13 @@ import {
     StyledSwipeableDrawer,
 } from './styled';
 import FormatAlignCenterIcon from '@mui/icons-material/FormatAlignCenter';
+import { NavbarProps, NavbarLinkData } from 'models/NavbarModels';
 
-interface NavbarProps {
-    //
-}
-
-const linksData = [
-    { href: '/', name: 'Home' },
-    { href: '/', name: 'About' },
-    { href: '/', name: 'Blog' },
-    { href: '/', name: 'Store' },
+const linksData: NavbarLinkData[] = [
+    { href: '/', name: 'Home', key: 1 },
+    { href: '/', name: 'About', key: 2 },
+    { href: '/', name: 'Blog', key: 3 },
+    { href: '/', name: 'Store', key: 4 },
 ];
 
 const Navbar: React.FC<NavbarProps> = () => {
@@ -31,7 +28,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                 onOpen={() => setDrawerOpen(true)}
             >
                 {linksData.map((element) => (
-                    <StyledNavLink href={element.href}>
+                    <StyledNavLink href={element.href} key={element.key}>
                         {element.name}
                     </StyledNavLink>
                 ))}
@@ -44,7 +41,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                     <FormatAlignCenterIcon />
                 </StyledMenuToggleButton>
                 {linksData.map((element) => (
-                    <StyledNavLink href={element.href}>
+                    <StyledNavLink href={element.href} key={element.key}>
                         {element.name}
                     </StyledNavLink>
                 ))}

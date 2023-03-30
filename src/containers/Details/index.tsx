@@ -1,6 +1,4 @@
-interface DetailsProps {
-    // add any props you want to pass to Home component
-}
+import { DetailsProps } from 'models/DetailsModels';
 
 const Details: React.FC<DetailsProps> = () => {
     return <div>beer details</div>;
