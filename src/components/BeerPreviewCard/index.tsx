@@ -1,6 +1,7 @@
 import { BeerPreviewCardProps } from "models/BeerPreviewCardModels";
 import { StyledCard, StyledContentCard } from "./styled";
 import GradeIcon from "@mui/icons-material/Grade";
+import { useNavigate } from "react-router";
 
 const BeerPreviewCard: React.FC<BeerPreviewCardProps> = ({
     id,
@@ -8,8 +9,10 @@ const BeerPreviewCard: React.FC<BeerPreviewCardProps> = ({
     tagline,
     imageUrl,
 }) => {
+    const navigate = useNavigate();
+
     return (
-        <StyledCard>
+        <StyledCard onClick={() => navigate(`/beer/${id}`)}>
             <StyledContentCard>
                 <img src={imageUrl} alt="beer" />
                 <span>{name}</span>
