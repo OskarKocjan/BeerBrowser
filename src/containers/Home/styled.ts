@@ -39,13 +39,13 @@ export const StyledMiddleContainer = styled("div")(({ theme }) => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    gap: "20px",
+    gap: "10px",
     width: "100%",
 
     ".main-left": {
-        width: "20%",
+        width: "10%",
         [theme.breakpoints.down("sm")]: {
-            width: "10%",
+            width: "5%",
         },
     },
     ".main-center": {
@@ -54,15 +54,17 @@ export const StyledMiddleContainer = styled("div")(({ theme }) => ({
         display: "grid",
         gridTemplateColumns: "repeat(3, 1fr)",
         gridTemplateRows: "repeat(4, 1fr)",
-        gridGap: "5rem",
+        gridGap: "3rem",
         [theme.breakpoints.down("md")]: {
             gridTemplateColumns: "repeat(2, 1fr)",
             gridTemplateRows: "repeat(8, 1fr)",
+            gridGap: "2rem",
         },
         [theme.breakpoints.down("sm")]: {
             width: "90%",
             gridTemplateColumns: "repeat(1, 1fr)",
             gridTemplateRows: "repeat(12, 1fr)",
+            gridGap: "1rem",
         },
         ".grid-item": {
             backgroundColor: "red",
@@ -71,9 +73,9 @@ export const StyledMiddleContainer = styled("div")(({ theme }) => ({
         },
     },
     ".main-right": {
-        width: "20%",
+        width: "10%",
         [theme.breakpoints.down("sm")]: {
-            width: "10%",
+            width: "5%",
         },
     },
 }));

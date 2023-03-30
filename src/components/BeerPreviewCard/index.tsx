@@ -1,6 +1,6 @@
 import { BeerPreviewCardProps } from "models/BeerPreviewCardModels";
-import { StyledCard } from "./styled";
-import { CardContent } from "@mui/material";
+import { StyledCard, StyledContentCard } from "./styled";
+import GradeIcon from "@mui/icons-material/Grade";
 
 const BeerPreviewCard: React.FC<BeerPreviewCardProps> = ({
     id,
@@ -10,7 +10,12 @@ const BeerPreviewCard: React.FC<BeerPreviewCardProps> = ({
 }) => {
     return (
         <StyledCard>
-            <img src={imageUrl} alt="beer" />
+            <StyledContentCard>
+                <img src={imageUrl} alt="beer" />
+                <span>{name}</span>
+                <GradeIcon />
+                <span>{tagline}</span>
+            </StyledContentCard>
         </StyledCard>
     );
 };
