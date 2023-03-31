@@ -3,10 +3,12 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import LoadingSpin from "components/LoadingSpin";
+import { objToArray, getNames } from "utils/helpingFunctions";
 import {
     StyledMainDetailsContainer,
     StyledLeftDetailsContainer,
     StyledRightDetailsContainer,
+    StyledIngredientsContainer,
 } from "./styled";
 
 const apiUrl = "https://api.punkapi.com/v2/beers?";
@@ -39,6 +41,7 @@ const Details: React.FC<DetailsProps> = () => {
     }, [location.pathname]);
 
     console.log(detailedBeerData);
+    console.log(objToArray(detailedBeerData.ingredients));
 
     return (
         <StyledMainDetailsContainer>
@@ -54,11 +57,59 @@ const Details: React.FC<DetailsProps> = () => {
                     <LoadingSpin />
                 ) : (
                     <>
-                        <span>{detailedBeerData.name}</span>
-                        <span>{detailedBeerData.tagline}</span>
-                        <span>{detailedBeerData.description}</span>
-                        <span>{detailedBeerData.abv}</span>
-                        <span>{detailedBeerData.ibu}</span>
+                        <div>
+                            <span>Name: </span>
+                            {detailedBeerData.name}
+                        </div>
+                        <div>
+                            <span>Tag: </span>
+                            {detailedBeerData.tagline}
+                        </div>
+                        <div>
+                            <span>Description: </span>
+                            {detailedBeerData.description}
+                        </div>
+                        <div>
+                            <span>Abv: </span>
+                            {detailedBeerData.abv}%
+                        </div>
+                        <div>
+                            <span>Ibu: </span>
+                            {detailedBeerData.ibu}
+                        </div>
+                        <div>
+                            <span>Ingredients: </span>
+                        </div>
+                        <StyledIngredientsContainer>
+                            <div className="ingredient-list-container">
+                                Hops
+                                <ul>
+                                    {getNames(
+                                        detailedBeerData.ingredients.hops,
+                                    ).map((element: string) => {
+                                        return <li>{element}</li>;
+                                    })}
+                                </ul>
+                            </div>
+                            <div className="ingredient-list-container">
+                                Malt
+                                <ul>
+                                    {getNames(
+                                        detailedBeerData.ingredients.malt,
+                                    ).map((element: string) => {
+                                        return <li>{element}</li>;
+                                    })}
+                                </ul>
+                            </div>
+                            <div className="ingredient-list-container">
+                                Yeast
+                                <ul>
+                                    <li>
+                                        {detailedBeerData.ingredients.yeast}
+                                    </li>
+                                </ul>
+                            </div>
+                        </StyledIngredientsContainer>
                     </>
                 )}
 
