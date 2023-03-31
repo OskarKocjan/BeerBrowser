@@ -5,46 +5,72 @@ import { HomeProps } from "models/HomeModels";
 import { TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import BeerPreviewCard from "components/BeerPreviewCard";
+import LoadingSpin from "components/LoadingSpin";
+import Pagination from "components/Pagination";
+import { getMoreBeerDataPage } from "utils/helpingFunctions";
+
+const pagesPerRequest = 5;
+const beersPerPage = 12;
+//API provides only 80 beers per request so pagesPerRequest*beersPerPage must be < 80
 
 const apiUrl = "https://api.punkapi.com/v2/beers?";
 const Home: React.FC<HomeProps> = () => {
-    const [beerData, setBeerData] = useState([]);
+    const [beerData, setBeerData] = useState<any[]>([]);
     const [pageNumber, setPageNumber] = useState(1);
     const [searchBarValue, setSearchBarValue] = useState("");
     const [displayedBeers, setDisplayedBeers] = useState<any[]>([]);
 
-    const fetchData = async (prompt: string) => {
+    const fetchData = async (prompt: string, update: boolean) => {
         try {
             const response = await axios.get(apiUrl + prompt);
-            setBeerData(response.data);
+            update
+                ? setBeerData([...beerData, ...response.data])
+                : setBeerData(response.data);
         } catch (error) {
             console.error(error);
         }
     };
 
     useEffect(() => {
-        fetchData(`page=1&per_page=${12 * 5}`);
+        // setTimeout(
+        //     () =>
+        //         fetchData(
+        //             `page=1&per_page=${beersPerPage * pagesPerRequest}`,
+        //             false,
+        //         ),
+        //     3000,
+        // ); // to test if Loading icon is working
+        fetchData(`page=1&per_page=${beersPerPage * pagesPerRequest}`, false);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
+        if (getMoreBeerDataPage(pageNumber, beersPerPage, beerData.length)) {
+            fetchData(
+                `page=${Math.ceil(
+                    (pageNumber + 1) / pagesPerRequest,
+                )}&per_page=${beersPerPage * pagesPerRequest}`,
+                true,
+            );
+        }
+
         const tmpBeersToDisplay = beerData.slice(
-            12 * (pageNumber - 1),
-            12 * pageNumber,
+            beersPerPage * (pageNumber - 1),
+            beersPerPage * pageNumber,
         );
         setDisplayedBeers(tmpBeersToDisplay);
     }, [pageNumber, beerData]);
 
     const handleSumbit = () => {
         if (!searchBarValue) return;
+        setBeerData([]);
+        setPageNumber(1);
         let tmpValue = searchBarValue;
         setSearchBarValue("");
-        fetchData(tmpValue);
+        setTimeout(() => {
+            fetchData("beer_name=" + tmpValue, false);
+        }, 1000);
     };
-
-    console.log(beerData);
-    console.log(searchBarValue);
-
-    console.log(beerData.slice(12 * (pageNumber - 1), 12 * pageNumber));
 
     return (
         <StyledMainContentContainer>
@@ -66,6 +92,9 @@ const Home: React.FC<HomeProps> = () => {
                     }}
                 />
             </div>
+
+            {beerData.length === 0 && <LoadingSpin />}
+            <Pagination pageNumber={pageNumber} setPageNumber={setPageNumber} />
             <StyledMiddleContainer>
                 <div className="main-left"></div>
                 <div className="main-center">
@@ -82,7 +111,12 @@ const Home: React.FC<HomeProps> = () => {
                 </div>
                 <div className="main-right"></div>
             </StyledMiddleContainer>
-            <div className="page-number-container"></div>
+            <div className="page-number-container">
+                <Pagination
+                    pageNumber={pageNumber}
+                    setPageNumber={setPageNumber}
+                />
+            </div>
         </StyledMainContentContainer>
     );
 };

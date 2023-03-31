@@ -97,5 +97,9 @@ export const StyledNavLink = styled(Link)(({ theme }) => ({
     },
     "&:active": {
         marginBottom: "1px",
+        [theme.breakpoints.down("md")]: {
+            margin: "2rem",
+            color: "#808080",
+        },
     },
 }));

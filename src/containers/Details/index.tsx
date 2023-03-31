@@ -2,6 +2,7 @@ import { DetailsProps } from "models/DetailsModels";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import LoadingSpin from "components/LoadingSpin";
 import {
     StyledMainDetailsContainer,
     StyledLeftDetailsContainer,
@@ -11,23 +12,29 @@ import {
 const apiUrl = "https://api.punkapi.com/v2/beers?";
 
 const getBeerId = (path: string) => {
-    return path.split("/").slice(-1)[0] as string;
+    const checkIfNumber = path.split("/").slice(-1)[0];
+    if (!+checkIfNumber) return "1";
+    return Math.floor(+checkIfNumber).toString();
 };
 
 const Details: React.FC<DetailsProps> = () => {
-    const [detailedBeerData, setdetailedBeerData] = useState<any>({});
+    const [detailedBeerData, setDetailedBeerData] = useState<any>({});
     const location = useLocation();
 
     const fetchData = async (prompt: string) => {
         try {
             const response = await axios.get(apiUrl + prompt);
-            setdetailedBeerData(response.data[0]);
+            setDetailedBeerData(response.data[0]);
         } catch (error) {
             console.error(error);
         }
     };
 
     useEffect(() => {
+        // setTimeout(
+        //     () => fetchData("ids=" + getBeerId(location.pathname)),
+        //     3000,
+        // ); // to test if Loading icon is //working
         fetchData("ids=" + getBeerId(location.pathname));
     }, [location.pathname]);
 
@@ -36,15 +43,25 @@ const Details: React.FC<DetailsProps> = () => {
     return (
         <StyledMainDetailsContainer>
             <StyledLeftDetailsContainer>
-                <img src={detailedBeerData.image_url} alt="beer" />
+                {!detailedBeerData.image_url ? (
+                    <LoadingSpin />
+                ) : (
+                    <img src={detailedBeerData.image_url} alt="beer" />
+                )}
             </StyledLeftDetailsContainer>
-
             <StyledRightDetailsContainer>
-                <span>{detailedBeerData.name}</span>
-                <span>{detailedBeerData.tagline}</span>
-                <span>{detailedBeerData.description}</span>
-                <span>{detailedBeerData.abv}</span>
-                <span>{detailedBeerData.ibu}</span>
+                {!detailedBeerData.image_url ? (
+                    <LoadingSpin />
+                ) : (
+                    <>
+                        <span>{detailedBeerData.name}</span>
+                        <span>{detailedBeerData.tagline}</span>
+                        <span>{detailedBeerData.description}</span>
+                        <span>{detailedBeerData.abv}</span>
+                        <span>{detailedBeerData.ibu}</span>
+                    </>
+                )}
+
                 {/* <span>{detailedBeerData.ingredients}</span> */}
             </StyledRightDetailsContainer>
         </StyledMainDetailsContainer>

@@ -41,6 +41,7 @@ export const StyledMiddleContainer = styled("div")(({ theme }) => ({
     alignItems: "center",
     gap: "10px",
     width: "100%",
+    minHeight: "450px",
 
     ".main-left": {
         width: "10%",
@@ -53,23 +54,15 @@ export const StyledMiddleContainer = styled("div")(({ theme }) => ({
         width: "80%",
         display: "grid",
         gridTemplateColumns: "repeat(3, 1fr)",
-        gridTemplateRows: "repeat(4, 1fr)",
         gridGap: "3rem",
         [theme.breakpoints.down("md")]: {
             gridTemplateColumns: "repeat(2, 1fr)",
-            gridTemplateRows: "repeat(8, 1fr)",
             gridGap: "2rem",
         },
         [theme.breakpoints.down("sm")]: {
             width: "90%",
             gridTemplateColumns: "repeat(1, 1fr)",
-            gridTemplateRows: "repeat(12, 1fr)",
             gridGap: "1rem",
-        },
-        ".grid-item": {
-            backgroundColor: "red",
-            textAlign: "center",
-            padding: "20px",
         },
     },
     ".main-right": {

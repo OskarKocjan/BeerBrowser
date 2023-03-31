@@ -3,7 +3,7 @@ import backgroundBeer from "images/beerBackground.jpg";
 
 export const ImageHolder = styled("div")(({ theme }) => ({
     backgroundImage: `url(${backgroundBeer})`,
-    height: "80vh",
+    height: "70vh",
     width: "100vw",
     backgroundSize: "100%",
     backgroundRepeat: "no-repeat",
