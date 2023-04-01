@@ -17,7 +17,16 @@ export const StyledMainContentContainer = styled("div")(({ theme }) => ({
             width: "100%",
             boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
         },
+
+        ".go-back-button": {
+            backgroundColor: theme.palette.primary.main,
+            marginRight: "1rem",
+            [theme.breakpoints.down("sm")]: {
+                marginTop: "1.5rem",
+            },
+        },
         button: {
+            height: "3rem",
             color: theme.palette.primary.contrastText,
             "&:hover": {
                 cursor: "pointer",
@@ -31,6 +40,7 @@ export const StyledMainContentContainer = styled("div")(({ theme }) => ({
         },
         [theme.breakpoints.down("sm")]: {
             width: "65%",
+            flexDirection: "column-reverse",
         },
     },
 }));

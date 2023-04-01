@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { StyledMainContentContainer, StyledMiddleContainer } from "./styled";
 import { HomeProps } from "models/HomeModels";
-import { TextField } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import BeerPreviewCard from "components/BeerPreviewCard";
 import LoadingSpin from "components/LoadingSpin";
 import Pagination from "components/Pagination";
 import { getMoreBeerDataPage } from "utils/helpingFunctions";
+import UndoIcon from "@mui/icons-material/Undo";
 
 const pagesPerRequest = 5;
 const beersPerPage = 12;
@@ -85,6 +86,18 @@ const Home: React.FC<HomeProps> = () => {
     return (
         <StyledMainContentContainer>
             <div className="search-bar-container">
+                <Button
+                    className="go-back-button"
+                    onClick={() => {
+                        fetchData(
+                            `page=1&per_page=${beersPerPage * pagesPerRequest}`,
+                            false,
+                        );
+                        setPageNumber(1);
+                    }}
+                >
+                    <UndoIcon />
+                </Button>
                 <TextField
                     placeholder="Search your beer!"
                     variant="outlined"

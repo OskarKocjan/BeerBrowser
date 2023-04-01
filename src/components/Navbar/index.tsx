@@ -9,15 +9,19 @@ import {
 import FormatAlignCenterIcon from "@mui/icons-material/FormatAlignCenter";
 import { NavbarProps, NavbarLinkData } from "models/NavbarModels";
 
-const linksData: NavbarLinkData[] = [
-    { href: "/", name: "Home", key: 1 },
-    { href: "/", name: "About", key: 2 },
-    { href: "/", name: "Blog", key: 3 },
-    { href: "/", name: "Store", key: 4 },
-];
-
 const Navbar: React.FC<NavbarProps> = () => {
     const [drawerOpen, setDrawerOpen] = useState(false);
+
+    const linksData: NavbarLinkData[] = [
+        { href: "/", name: "Home", key: 1 },
+        {
+            href: `/beer/${Math.floor(Math.random() * 263) + 1}`,
+            name: "Surprise",
+            key: 2,
+        },
+        { href: "/", name: "Blog", key: 3 },
+        { href: "/", name: "Store", key: 4 },
+    ];
 
     return (
         <StyledNavBar>
