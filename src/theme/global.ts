@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
     *{
@@ -10,7 +10,7 @@ export default createGlobalStyle`
     }
     html, body, #app, #app>div {
         height: 100%
-}
+    }
     #root{
         margin:0 auto;
         
@@ -19,5 +19,21 @@ export default createGlobalStyle`
             padding: 0;
             border: none;
             background: none;
-        },
+        }
+
+    .center-section-row{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .center-section-column{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+
+
 `;

@@ -9,8 +9,8 @@ import AgeConfirmation from "components/AgeConfirmation";
 const App = () => {
     return (
         <div className="App">
-            <ImageHolder />
             <Navbar />
+            <ImageHolder />
             <AgeConfirmation />
             <Routes>
                 {routesData.map((element) => {

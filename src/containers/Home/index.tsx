@@ -11,6 +11,7 @@ import { getMoreBeerDataPage } from "utils/helpingFunctions";
 
 const pagesPerRequest = 5;
 const beersPerPage = 12;
+const maxBeersPerRequest = 80;
 //API provides only 80 beers per request so pagesPerRequest*beersPerPage must be < 80
 
 const apiUrl = "https://api.punkapi.com/v2/beers?";
@@ -73,6 +74,14 @@ const Home: React.FC<HomeProps> = () => {
         }, 1000);
     };
 
+    if (pagesPerRequest * beersPerPage > maxBeersPerRequest)
+        return (
+            <>
+                API provides only {maxBeersPerRequest} beers per request so
+                pagesPerRequest*beersPerPage must be &lt; 80
+            </>
+        );
+
     return (
         <StyledMainContentContainer>
             <div className="search-bar-container">
@@ -94,12 +103,12 @@ const Home: React.FC<HomeProps> = () => {
                 />
             </div>
 
-            {beerData.length === 0 && <LoadingSpin />}
             <Pagination
                 pageNumber={pageNumber}
                 setPageNumber={setPageNumber}
                 numberOfBeersOnPage={displayedBeers.length}
             />
+            {beerData.length === 0 && <LoadingSpin />}
             <StyledMiddleContainer>
                 <div className="main-left"></div>
                 <div className="main-center">
