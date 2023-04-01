@@ -86,8 +86,8 @@ const Details: React.FC<DetailsProps> = () => {
                                 <ul>
                                     {getNames(
                                         detailedBeerData.ingredients.hops,
-                                    ).map((element: string) => {
-                                        return <li>{element}</li>;
+                                    ).map((element: string, index: number) => {
+                                        return <li key={index}>{element}</li>;
                                     })}
                                 </ul>
                             </div>
@@ -96,8 +96,8 @@ const Details: React.FC<DetailsProps> = () => {
                                 <ul>
                                     {getNames(
                                         detailedBeerData.ingredients.malt,
-                                    ).map((element: string) => {
-                                        return <li>{element}</li>;
+                                    ).map((element: string, index: number) => {
+                                        return <li key={index}>{element}</li>;
                                     })}
                                 </ul>
                             </div>
@@ -112,8 +112,6 @@ const Details: React.FC<DetailsProps> = () => {
                         </StyledIngredientsContainer>
                     </>
                 )}
-
-                {/* <span>{detailedBeerData.ingredients}</span> */}
             </StyledRightDetailsContainer>
         </StyledMainDetailsContainer>
     );

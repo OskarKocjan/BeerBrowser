@@ -7,9 +7,14 @@ import { PaginationProps } from "models/PaginationModels";
 const Pagination: React.FC<PaginationProps> = ({
     pageNumber,
     setPageNumber,
+    numberOfBeersOnPage,
 }) => {
     const changePageNumber = (pageNumber: number, how: number) => {
-        if (pageNumber === 1 && how === -1) return;
+        if (
+            (pageNumber === 1 && how === -1) ||
+            (numberOfBeersOnPage < 12 && how === 1)
+        )
+            return;
         setPageNumber(pageNumber + how);
     };
 

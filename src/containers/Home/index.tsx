@@ -59,6 +59,7 @@ const Home: React.FC<HomeProps> = () => {
             beersPerPage * pageNumber,
         );
         setDisplayedBeers(tmpBeersToDisplay);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pageNumber, beerData]);
 
     const handleSumbit = () => {
@@ -94,7 +95,11 @@ const Home: React.FC<HomeProps> = () => {
             </div>
 
             {beerData.length === 0 && <LoadingSpin />}
-            <Pagination pageNumber={pageNumber} setPageNumber={setPageNumber} />
+            <Pagination
+                pageNumber={pageNumber}
+                setPageNumber={setPageNumber}
+                numberOfBeersOnPage={displayedBeers.length}
+            />
             <StyledMiddleContainer>
                 <div className="main-left"></div>
                 <div className="main-center">
@@ -105,6 +110,7 @@ const Home: React.FC<HomeProps> = () => {
                                 name={element.name}
                                 tagline={element.tagline}
                                 imageUrl={element.image_url}
+                                key={element.id}
                             ></BeerPreviewCard>
                         );
                     })}
@@ -115,6 +121,7 @@ const Home: React.FC<HomeProps> = () => {
                 <Pagination
                     pageNumber={pageNumber}
                     setPageNumber={setPageNumber}
+                    numberOfBeersOnPage={displayedBeers.length}
                 />
             </div>
         </StyledMainContentContainer>

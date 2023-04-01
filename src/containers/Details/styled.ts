@@ -6,20 +6,34 @@ export const StyledMainDetailsContainer = styled("div")(({ theme }) => ({
     justifyContent: "center",
     margin: "8rem",
     height: "30rem",
+    [theme.breakpoints.down("md")]: {
+        flexDirection: "column",
+        margin: "0 auto",
+        marginTop: "16vw",
+        height: "60rem",
+        width: "80%",
+    },
 }));
 
 export const StyledLeftDetailsContainer = styled("div")(({ theme }) => ({
     height: "100%",
-    width: "50%",
+    width: "65%",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     borderRight: `0.3rem solid ${theme.palette.primary.main}`,
+    [theme.breakpoints.down("md")]: {
+        borderRight: `0`,
+        borderBottom: `0.3rem solid ${theme.palette.primary.main}`,
+        width: "100%",
+        maxHeight: "50%",
+    },
     img: {
-        maxWidth: "75%",
-        maxHeight: "75%",
+        maxWidth: "85%",
+        maxHeight: "85%",
         [theme.breakpoints.down("md")]: {
-            maxHeight: "55%",
+            maxWidth: "65%",
+            maxHeight: "80%",
         },
     },
 }));
@@ -33,11 +47,20 @@ export const StyledRightDetailsContainer = styled("div")(({ theme }) => ({
     alignItems: "left",
     justifyContent: "center",
     flexDirection: "column",
+    [theme.breakpoints.down("md")]: {
+        width: "100%",
+        marginLeft: "0",
+    },
 
     div: {
         span: {
             fontSize: "1.2rem",
             fontWeight: "bold",
+        },
+    },
+    ul: {
+        [theme.breakpoints.down("sm")]: {
+            fontSize: "0.8rem",
         },
     },
 }));
