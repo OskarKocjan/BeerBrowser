@@ -23,7 +23,7 @@ const Home: React.FC<HomeProps> = () => {
     const [searchBarValue, setSearchBarValue] = useState("");
     const [displayedBeers, setDisplayedBeers] = useState<BeerProps[]>([]);
 
-    const fetchData = async (prompt: string, update: boolean): void => {
+    const fetchData = async (prompt: string, update: boolean) => {
         try {
             const response = await axios.get(apiUrl + prompt);
             update
