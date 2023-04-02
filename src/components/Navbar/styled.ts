@@ -48,6 +48,10 @@ export const StyledNavBar = styled("nav")(({ theme }) => ({
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        a: {
+            textDecoration: "inherit",
+            color: "inherit",
+        },
     },
     ".navbar-right": {
         marginRight: "4rem",

@@ -3,13 +3,14 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import LoadingSpin from "components/LoadingSpin";
-import { objToArray, getNames } from "utils/helpingFunctions";
+import { getNames } from "utils/helpingFunctions";
 import {
     StyledMainDetailsContainer,
     StyledLeftDetailsContainer,
     StyledRightDetailsContainer,
     StyledIngredientsContainer,
 } from "./styled";
+import { BeerProps } from "models/DetailsModels";
 
 const apiUrl = "https://api.punkapi.com/v2/beers?";
 
@@ -20,7 +21,7 @@ const getBeerId = (path: string) => {
 };
 
 const Details: React.FC<DetailsProps> = () => {
-    const [detailedBeerData, setDetailedBeerData] = useState<any>({});
+    const [detailedBeerData, setDetailedBeerData] = useState<BeerProps>();
     const location = useLocation();
 
     const fetchData = async (prompt: string) => {
@@ -40,20 +41,19 @@ const Details: React.FC<DetailsProps> = () => {
         fetchData("ids=" + getBeerId(location.pathname));
     }, [location.pathname]);
 
-    console.log(detailedBeerData);
-    console.log(objToArray(detailedBeerData.ingredients));
-
     return (
         <StyledMainDetailsContainer>
             <StyledLeftDetailsContainer>
-                {!detailedBeerData.image_url ? (
+                {detailedBeerData === undefined ||
+                !detailedBeerData.image_url ? (
                     <LoadingSpin />
                 ) : (
                     <img src={detailedBeerData.image_url} alt="beer" />
                 )}
             </StyledLeftDetailsContainer>
             <StyledRightDetailsContainer>
-                {!detailedBeerData.image_url ? (
+                {detailedBeerData === undefined ||
+                !detailedBeerData.image_url ? (
                     <LoadingSpin />
                 ) : (
                     <>

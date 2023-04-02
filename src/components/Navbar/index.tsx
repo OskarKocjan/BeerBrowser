@@ -51,7 +51,9 @@ const Navbar: React.FC<NavbarProps> = () => {
                 ))}
             </div>
             <div className="navbar-center">
-                <SportsBarIcon sx={{ height: "100%", fontSize: "3rem" }} />
+                <a href="/">
+                    <SportsBarIcon sx={{ height: "100%", fontSize: "3rem" }} />
+                </a>
                 <span>Beer</span>
             </div>
             <div className="navbar-right"></div>

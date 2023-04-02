@@ -9,6 +9,7 @@ import LoadingSpin from "components/LoadingSpin";
 import Pagination from "components/Pagination";
 import { getMoreBeerDataPage } from "utils/helpingFunctions";
 import UndoIcon from "@mui/icons-material/Undo";
+import { BeerProps } from "models/DetailsModels";
 
 const pagesPerRequest = 5;
 const beersPerPage = 12;
@@ -17,10 +18,10 @@ const maxBeersPerRequest = 80;
 
 const apiUrl = "https://api.punkapi.com/v2/beers?";
 const Home: React.FC<HomeProps> = () => {
-    const [beerData, setBeerData] = useState<any[]>([]);
+    const [beerData, setBeerData] = useState<BeerProps[]>([]);
     const [pageNumber, setPageNumber] = useState(1);
     const [searchBarValue, setSearchBarValue] = useState("");
-    const [displayedBeers, setDisplayedBeers] = useState<any[]>([]);
+    const [displayedBeers, setDisplayedBeers] = useState<BeerProps[]>([]);
 
     const fetchData = async (prompt: string, update: boolean) => {
         try {
@@ -125,7 +126,7 @@ const Home: React.FC<HomeProps> = () => {
             <StyledMiddleContainer>
                 <div className="main-left"></div>
                 <div className="main-center">
-                    {displayedBeers.map((element) => {
+                    {displayedBeers.map((element: BeerProps) => {
                         return (
                             <BeerPreviewCard
                                 id={element.id}
