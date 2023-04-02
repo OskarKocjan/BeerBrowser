@@ -5,6 +5,7 @@ import { Route } from "react-router";
 import Navbar from "components/Navbar";
 import { ImageHolder, TypeWriter } from "./styled";
 import AgeConfirmation from "components/AgeConfirmation";
+import RouteProps from "models/Route";
 
 const App = () => {
     return (
@@ -17,7 +18,7 @@ const App = () => {
             </ImageHolder>
             <AgeConfirmation />
             <Routes>
-                {routesData.map((element) => {
+                {routesData.map((element: RouteProps) => {
                     return <Route {...element}></Route>;
                 })}
             </Routes>

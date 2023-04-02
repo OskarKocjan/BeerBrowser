@@ -9,7 +9,7 @@ const Pagination: React.FC<PaginationProps> = ({
     setPageNumber,
     numberOfBeersOnPage,
 }) => {
-    const changePageNumber = (pageNumber: number, how: number) => {
+    const changePageNumber = (pageNumber: number, how: number): void => {
         if (
             (pageNumber === 1 && how === -1) ||
             (numberOfBeersOnPage < 12 && how === 1)

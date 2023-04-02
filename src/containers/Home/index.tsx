@@ -23,7 +23,7 @@ const Home: React.FC<HomeProps> = () => {
     const [searchBarValue, setSearchBarValue] = useState("");
     const [displayedBeers, setDisplayedBeers] = useState<BeerProps[]>([]);
 
-    const fetchData = async (prompt: string, update: boolean) => {
+    const fetchData = async (prompt: string, update: boolean): void => {
         try {
             const response = await axios.get(apiUrl + prompt);
             update
@@ -65,7 +65,7 @@ const Home: React.FC<HomeProps> = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pageNumber, beerData]);
 
-    const handleSumbit = () => {
+    const handleSumbit = (): void => {
         if (!searchBarValue) return;
         setBeerData([]);
         setPageNumber(1);
