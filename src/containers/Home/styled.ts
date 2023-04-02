@@ -23,6 +23,7 @@ export const StyledMainContentContainer = styled("div")(({ theme }) => ({
             marginRight: "1rem",
             [theme.breakpoints.down("sm")]: {
                 marginTop: "1.5rem",
+                marginRight: 0,
             },
         },
         button: {

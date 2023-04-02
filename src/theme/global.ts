@@ -34,6 +34,5 @@ export default createGlobalStyle`
         flex-direction: column;
     }
 
-
-
+    
 `;

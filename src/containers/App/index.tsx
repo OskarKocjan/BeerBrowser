@@ -3,14 +3,18 @@ import routesData from "utils/routesData";
 import { Routes } from "react-router";
 import { Route } from "react-router";
 import Navbar from "components/Navbar";
-import { ImageHolder } from "./styled";
+import { ImageHolder, TypeWriter } from "./styled";
 import AgeConfirmation from "components/AgeConfirmation";
 
 const App = () => {
     return (
         <div className="App">
             <Navbar />
-            <ImageHolder />
+            <ImageHolder className="center-section-row">
+                <span>
+                    <TypeWriter>Welcome to beer page</TypeWriter>
+                </span>
+            </ImageHolder>
             <AgeConfirmation />
             <Routes>
                 {routesData.map((element) => {

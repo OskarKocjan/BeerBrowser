@@ -20,6 +20,10 @@ export const StyledNavBar = styled("nav")(({ theme }) => ({
 
     boxShadow: "rgba(0, 0, 0, 0.35) 0px 2px 10px",
 
+    [theme.breakpoints.down("md")]: {
+        height: "4.5rem",
+    },
+
     ".navbar-left": {
         marginLeft: "4rem",
         gap: "2rem",
@@ -79,6 +83,7 @@ export const StyledNavLink = styled(Link)(({ theme }) => ({
     display: "block",
     position: "relative",
     color: theme.palette.primary.contrastText,
+    width: "max-content",
     "&::after": {
         content: "''",
         position: "absolute",
